@@ -122,7 +122,7 @@ for p = 1:length(probtypes)
 
         X0 = dfoxs(BenDFO.n, BenDFO.nprob, 10^BenDFO.factor_power);
         func = @(x) calfun(x, BenDFO, probtypes(p));
-        dfunc = @(x) jacobian(BenDFO.m, BenDFO.n, x, BenDFO.nprob);
+        dfunc = @(x) out3(x(:)', BenDFO, probtypes(p));
         
         % % Run solver for each coefficient combination
         % for ic = 1:c_len
@@ -204,3 +204,8 @@ function hist = revise_hist(max_iter, hist, f0)
         end
     end
 end
+
+function G=out3(x, BenDFO, ptypes)
+	[~, ~, G, ~] = calfun(x, BenDFO, ptypes);
+end
+

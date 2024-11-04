@@ -44,5 +44,4 @@ for ind = 1:n % Do one coordinate direction at a time:
     J(:, ind) = g_fvec;
 end
 
-J = sum(J,1)';
 end
